@@ -1,0 +1,100 @@
+<div class="container-fluid profile p-0">
+
+    <div class="banner">
+        <div class="banner-line"></div>
+    </div>
+
+    <div class="porfile-body container my-5 p-4 ">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col p-4 mx-auto">
+                    <div class="row">
+                        <div class="col-12 mb-5 d-flex justify-content-center">
+                            <div class="img-box border">
+                                <img [src]="profilePic" alt="">
+                            </div>
+                            
+                        </div>
+                        <div class=" mb-5 d-flex justify-content-center">
+                        <h3 class=""><b>{{ userName }}</b></h3>
+                    </div>
+                        <div class="col-12 ">
+                            <h3 class=""><b>บัญชีของคุณ</b></h3>
+                           
+                            <hr>
+                            <div class="row mb-2 col-18">
+                                <div class="col-6 ">
+                                    <h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;อีเมล : {{ currentUser?.email }}</h5>
+                                </div>
+                                <div class="col-6">
+                                    <h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;เบอร์โทร : {{ currentUser?.phoneNumber }}</h5>
+                                </div>
+                            </div>
+                            <div class="row mb-2" *ngIf="statusMember">
+                                <h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;วัน/เดือน/ปี เกิด : {{ currentUser?.birthDay | date:"dd / MMMM / yyyy "  }} </h5>
+                            </div>
+                            <div class="row">
+                                <b>คำอธิบาย :</b><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ currentUser?.description }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <h3 class="my-3"><b>ข้อมูลที่อยู่</b></h3>
+                <div class="row mb-2">
+                    <div class="col-12">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ที่อยู่ : {{ currentUser?.address?.houseNo }}
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-6">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;แขวง/ตำบล : {{ currentUser?.address?.district }}
+                    </div>
+                    <div class="col-6">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;เขต/อำเภอ : {{ currentUser?.address?.subDistrict }}
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-6">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;จังหวัด : {{ currentUser?.address?.province }}
+                    </div>
+                    <div class="col-6">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;รหัสไปรษณีย์ : {{ currentUser?.address?.country }}
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-6">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ประเทศ : {{ currentUser?.address?.zipCode }}
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="row" *ngIf="statusMember">
+                <h3 class="my-3"><b>ข้อมูลการศึกษา</b></h3>
+                <div class="overflow-scroll  w-100" style="height: 300px;">
+                    <div *ngFor="let e of currentUser?.educations">
+                        <hr>
+                        <div class="row">
+                            <div class="col-12">
+                                <h4>สถานศีกษา : {{ e?.academy }}</h4>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4">
+                                วุฒิ : {{ e?.qualification }}
+                            </div>
+                            <div class="col-4">
+                                สาขา/แผนก : {{ e?.department }}
+                            </div>
+                            <div class="col-4">
+                                เกรดเฉลี่ย : {{ e?.gpa }}
+                            </div>
+                        </div>
+                        <hr>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
